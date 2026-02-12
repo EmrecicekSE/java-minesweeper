@@ -39,8 +39,11 @@ public class Game {
         int user_row,user_col;
         System.out.print("Enter n value(to create n*n gameboard):"); 
         n=input.nextInt();
-        if(n<=0){
+        if(n<0){
             System.out.println("You must enter a number that is more than zero");
+            System.out.println("Run the program again...");
+            input.close();
+            return;          
         }
         char[][] userBoard=new char[n][n];
         int[][] gameBoard=new int[n][n];
@@ -99,7 +102,7 @@ public class Game {
                 }
                 System.out.println();
             }
-            System.out.print("Do you want to plant a flag\n1-)Yes\n2-)No\n3-)Replace flag\n");
+            System.out.print("Do you want to plant a flag\n1-)Yes\n2-)No\n3-)Replace flag\n4-)Quit");
             System.out.print("Choose an option:");
             flag=input.nextInt();
             switch(flag){
@@ -123,6 +126,10 @@ public class Game {
                     if(user_row<0 || user_row>=n || user_col<0 || user_col>=n){System.out.println("Out of index error..."); continue;}
                     userBoard[user_row][user_col]='X';
                     continue;
+                }
+                case 4:{
+                    System.out.println("Goodbye...");
+                    return;
                 }
             }
             System.out.println("=========");
